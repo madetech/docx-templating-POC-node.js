@@ -1,0 +1,24 @@
+{
+  "name": "docx-templating-poc-node",
+  "version": "1.0.0",
+  "description": "Code to provide proof of concept for parsing MS Word Templates and automating letter production",
+  "main": "findAndReplaceMultipleTags.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madetech/docx-templating-POC-node.js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/madetech/docx-templating-POC-node.js/issues"
+  },
+  "homepage": "https://github.com/madetech/docx-templating-POC-node.js#readme",
+  "dependencies": {
+    "docxtemplater": "^3.37.7",
+    "jszip": "^3.10.1",
+    "pizzip": "^3.1.4"
+  }
+}
