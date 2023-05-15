@@ -4,7 +4,7 @@ const PizZip = require("pizzip");
 const Docxtemplater = require("docxtemplater");
 
 // Read the DOCX file
-const content = fs.readFileSync("templateletter.docx", "binary");
+const content = fs.readFileSync("text-field-example.docx", "binary");
 
 // Load the content into a Zip object
 const zip = new PizZip(content);
