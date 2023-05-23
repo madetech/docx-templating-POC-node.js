@@ -10,7 +10,7 @@ There are currently 2 files providing different functionality: `findAndReplaceMu
 
 ### Next Steps:
 
-The letter templates for the DVLA currently use textFields to highlight the text that is to be populated with customer information. `findAndReplaceTextFields.js` shows that it's possible to target specific xml tags and amend the content, so the next steps are to pass in a json object containing customer data, update the default textFields and produce multiple docx files containing different customer's information.
+The letter templates for the DVLA currently use textFields to highlight the text that is to be populated with customer information. `findAndReplaceTextFields.js` shows an example of replacing the w:t tags in a string. The next steps are to work on an option that manipulates the XML DOM object directly, using libraris such as `xml-reader` and `xml-query`.
 
 ## Set up
 
