@@ -1,26 +1,29 @@
 const fs = require("fs");
 const JSZip = require("jszip");
 const PizZip = require("pizzip");
-const Docxtemplater = require("docxtemplater");
 
 // Read the DOCX file
-const content = fs.readFileSync("text-field-example.docx", "binary");
+const content = fs.readFileSync("./ExampleDOCX/no-text-fields.docx", "binary");
 
 // Load the content into a Zip object
 const zip = new PizZip(content);
 
 // Extract the XML file from the Zip object
 const xmlContent = zip.file("word/document.xml").asText();
+fs.writeFileSync('./Output/NO-TEXT-FIELDS-EXAMPLE.xml', xmlContent);
 
-const searchText = '<w:t>TEST</w:t>';
-const replaceText = '<w:t>IT WORKED!</w:t>';
+const nameSearch = '<w:t>Name</w:t>';
+const nameReplace = '<w:t>Mr John Smith</w:t>';
+const senderSearch = '<w:t>Sender</w:t>'
+const senderReplace = '<w:t>DVLA</w:t>';
 
-const updatedXmlContent = xmlContent.replace(searchText, replaceText);
+const updatedXmlContentWithName = xmlContent.replace(nameSearch, nameReplace);
+const updatedXmlContentWithSender = updatedXmlContentWithName.replace(senderSearch, senderReplace);
 
-fs.writeFileSync('FIND_AND_REPLACE.xml', updatedXmlContent);
+fs.writeFileSync('./Output/TEXT-FIELD.xml', updatedXmlContentWithSender);
 
 // Convert the modified XML back to a buffer
-const updatedXmlBuffer = Buffer.from(updatedXmlContent, "utf-8");
+const updatedXmlBuffer = Buffer.from(updatedXmlContentWithSender, "utf-8");
 
 // Update the Zip object with the modified XML
 zip.file("word/document.xml", updatedXmlBuffer);
@@ -29,4 +32,4 @@ zip.file("word/document.xml", updatedXmlBuffer);
 const updatedContent = zip.generate({ type: "nodebuffer" });
 
 // Save the updated DOCX file
-fs.writeFileSync("FIND_AND_REPLACE.docx", updatedContent);
+fs.writeFileSync("./Output/FIND_AND_REPLACE.docx", updatedContent);
